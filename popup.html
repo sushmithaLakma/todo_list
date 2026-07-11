@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>yet to-do</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <span class="eyebrow" id="todayLabel">Today</span>
+      <span class="wordmark"><span class="dot"></span>yet to-do</span>
+      <button class="icon-btn" id="clearDoneBtn" title="Clear completed">&#10003;</button>
+    </header>
+
+    <div class="hero">
+      <h1>Little wins, <em>ticked off</em> together.</h1>
+      <p id="dateLine">Friday, July 11</p>
+    </div>
+
+    <div class="stats-row">
+      <span class="stat-chip is-dark" id="progressChip">0 of 0 done</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab is-active" data-filter="all">All<span class="count" id="count-all"></span></button>
+      <button class="tab" data-filter="goal">Goals<span class="count" id="count-goal"></span></button>
+      <button class="tab" data-filter="activity">Activities<span class="count" id="count-activity"></span></button>
+      <button class="tab" data-filter="task">Tasks<span class="count" id="count-task"></span></button>
+    </nav>
+
+    <main class="list-scroll" id="listScroll">
+      <!-- task cards injected here -->
+    </main>
+
+    <form class="composer" id="composerForm">
+      <button type="button" class="cat-picker" id="catPicker" title="Change category">
+        <span class="cat-dot" id="catPickerDot"></span>
+      </button>
+      <input
+        class="composer-input"
+        id="taskInput"
+        type="text"
+        placeholder="Add something fun to do…"
+        maxlength="120"
+        autocomplete="off"
+      />
+      <button type="submit" class="composer-submit" title="Add">+</button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
