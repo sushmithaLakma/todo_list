@@ -10,8 +10,8 @@
 
   const seedTasks = () => [
     { id: cryptoId(), title: "Games night with the family", cat: "activity", meta: "Tonight · 7:00 PM", done: false },
-    { id: cryptoId(), title: "Evening walk, 16 minutes", cat: "activity", meta: "Activity & Fitness", done: true },
-    { id: cryptoId(), title: "Plan the week's meals", cat: "task", meta: "Food & Nutrition", done: false },
+    { id: cryptoId(), title: "Evening walk, 16 minutes", cat: "activity", meta: "", done: true },
+    { id: cryptoId(), title: "Plan the week's meals", cat: "task", meta: "", done: false },
     { id: cryptoId(), title: "Share a family reflection", cat: "task", meta: "3 responses so far", done: false },
     { id: cryptoId(), title: "Book the weekend trail", cat: "activity", meta: "Saturday morning", done: false },
     { id: cryptoId(), title: "Reply to the school email", cat: "task", meta: "", done: false },
@@ -59,12 +59,12 @@
     card.dataset.cat = task.cat;
 
     card.innerHTML = `
-      <button class="check" title="${task.done ? "Mark as not done" : "Mark as done"}">${checkIcon()}</button>
       <div class="task-main">
         <div class="task-eyebrow"><span class="cat-dot"></span>${cat.label}</div>
         <div class="task-title">${escapeHtml(task.title)}</div>
         ${task.meta ? `<div class="task-meta">${escapeHtml(task.meta)}</div>` : ""}
       </div>
+      <button class="check" title="${task.done ? "Mark as not done" : "Mark as done"}">${checkIcon()}</button>
     `;
 
     card.querySelector(".check").addEventListener("click", () => toggleDone(task.id));
