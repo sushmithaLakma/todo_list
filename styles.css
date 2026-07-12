@@ -11,6 +11,7 @@
   --color-bg: #faf8f1;
   --color-surface: #ffffff;
   --color-surface-cream: #f1ecdd;
+  --color-surface-peach: #f6ddc0;
   --color-surface-blue: #cfe8f6;
   --color-surface-lime: #dcf454;
   --color-surface-dark: #17170f;
@@ -22,11 +23,11 @@
   --color-line: #e8e2d1;
   --color-line-strong: #d8d0ba;
 
-  /* --- category tokens --- */
-  --cat-activity-bg: var(--color-surface-blue);
-  --cat-activity-fg: var(--color-ink);
+  /* --- category tokens: color mapped to activity type --- */
+  --cat-fitness-bg: var(--color-surface-lime);
+  --cat-food-bg: var(--color-surface-peach);
+  --cat-family-bg: var(--color-surface-blue);
   --cat-task-bg: var(--color-surface-cream);
-  --cat-task-fg: var(--color-ink);
 
   /* --- typography --- */
   --font-display: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
@@ -114,8 +115,8 @@ body {
 .task-card {
   width: 260px;
   display: flex;
-  align-items: flex-start;
-  gap: var(--sp-3);
+  flex-direction: column;
+  gap: 10px;
   padding: var(--sp-4);
   border-radius: var(--radius-card);
   background: var(--color-surface-cream);
@@ -138,7 +139,9 @@ body {
 .task-card:nth-child(6n+5) { transform: rotate(-2.5deg); margin-top: 14px; }
 .task-card:nth-child(6n+6) { transform: rotate(1.5deg); margin-top: 26px; }
 
-.task-card[data-cat="activity"] { background: var(--cat-activity-bg); }
+.task-card[data-cat="fitness"] { background: var(--cat-fitness-bg); }
+.task-card[data-cat="food"] { background: var(--cat-food-bg); }
+.task-card[data-cat="family"] { background: var(--cat-family-bg); }
 .task-card[data-cat="task"] { background: var(--cat-task-bg); }
 
 .task-card.is-done {
@@ -152,28 +155,41 @@ body {
   text-decoration-color: var(--color-line-strong);
 }
 
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cat-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(23, 23, 15, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
 .task-main {
   flex: 1;
   min-width: 0;
 }
 
 .task-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font: var(--text-eyebrow);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-ink-soft);
   opacity: 0.65;
   margin-bottom: 4px;
-}
-
-.task-eyebrow .cat-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
 }
 
 .task-title {
